@@ -12,14 +12,11 @@ export class NotesService implements OnInit {
     remoteCouch: Boolean;
 
     ngOnInit(): void {
-//    this.db = new PouchDB('notesDB');
-//    this.remoteCouch = false;
         console.log('PouchDB is Init');
     }
 
 
     constructor() {
-        console.log('Viele Grüße aus dem Ctor!');
         this.db = new PouchDB('notesDB');
         this.dbConfig = new PouchDB('notesConfigDB');
         this.remoteCouch = false;
