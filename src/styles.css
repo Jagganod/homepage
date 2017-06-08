@@ -1,0 +1,26 @@
+.showPointer {
+    cursor: pointer;
+}
+.textCenter {
+    text-align: center;
+}
+
+/* unvisited link */
+a:link {
+    color: grey;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: grey;
+}
+
+/* selected link */
+a:active {
+    color: grey;
+}

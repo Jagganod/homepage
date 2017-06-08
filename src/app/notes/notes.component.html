@@ -1,0 +1,60 @@
+<br/>
+<div class="container-fluid">
+  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+
+    <div class="btn-group mr-2" role="group" aria-label="Aktionen">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        placement="top"
+        ngbTooltip="Neue Notiz erfassen"
+        (click)="noteAdd()">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <!--<button type="button" class="btn btn-secondary">Middle</button>
+      <button type="button" class="btn btn-secondary">Right</button>-->
+    </div>
+
+    <div class="input-group">
+      <input type="text" align="end"
+
+             debounce
+             [delay]="700"
+             (func)="startSearch()"
+
+             [(ngModel)]="notesConfig.searchtext"
+             class="form-control"
+             placeholder="suchen nach...">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="startSearch()">Go!</button>
+      </span>
+    </div>
+
+  </div>
+</div>
+<div class="container-fluid">
+
+  <div class="row ">
+    <div *ngFor="let n of notes" class="col col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <note-card [item]="n" (onEdit)="doEdit($event)" (onDelete)="doDelete($event)">
+      </note-card>
+    </div>
+  </div>
+</div>
+
+<ng-template #noteDialog let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Notiz bearbeiten</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input style="width: 100%; margin-bottom: 1em" type="text" id="inputTitle" aria-describedby="titleHelp" [(ngModel)]="selectedNote.title" placeholder="Titel">
+    <textarea [(ngModel)]="selectedNote.content" placeholder="Notiz" id="noteText" rows="8" style="width: 100%"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('Ok')">Fertig</button>
+    <!--<button type="button" class="btn btn-secondary" (click)="c('Cancel')">Abbrechen</button>-->
+  </div>
+</ng-template>

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+    <div class="cssHeader ">
+        <div class="card textCenter">
+
+            <div class="card-block">
+                <h3>Unsere Katzen</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 distanceBottom" *ngFor="let cat of myCats; let i = index;">
+
+            <div class="card text-center">
+                <div class="card-header">{{cat.name}}</div>
+                <div class="card-block">
+                    <div style="display: inline">
+                        <img src="/assets/images/katzen/{{cat.name}}_01_thumb.jpg" alt="{{cat.name}}" class="showPointer" (click)="showCat(i,catsDialog)">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <ng-template #catsDialog let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">{{selectedCat.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let catImage of selectedCat.images">
+                    <img src="{{catImage}}" alt="{{selectedCat.name}}">
+                </ng-template>
+            </ngb-carousel>
+        </div>
+        <!--
+            <div class="modal-footer">
+            </div>
+        -->
+    </ng-template>
+
+
+</div>

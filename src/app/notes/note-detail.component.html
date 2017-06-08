@@ -1,0 +1,26 @@
+<div class="myCardOuter">
+  <div class="card myCard">
+    <div class="card-block">
+      <h6 class="card-title">{{item.title}}</h6>
+
+      <p class="card-text">{{item.content}}</p>
+      <!--
+        <p>
+          <button class="btn btn-default" *ngIf="!selected" (click)="select()">Auswählen</button>
+          <button class="btn btn-default" *ngIf="selected" (click)="deselect()">Entfernen</button>
+
+          <a class="btn btn-default" [routerLink]="['/flight-edit', item.id, { showDetails: true }]">Edit</a>
+        </p>
+        -->
+    </div>
+
+    <div class="noteCardToolbar">
+      <a (click)="saveNote()" ngbTooltip="bearbeiten">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+      </a>
+      <a (click)="deleteNote()" ngbTooltip="löschen">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>

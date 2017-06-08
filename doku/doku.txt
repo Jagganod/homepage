@@ -1,0 +1,3 @@
+Build Prod Version:
+
+ng build --prod
