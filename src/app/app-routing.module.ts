@@ -38,15 +38,18 @@ const appRoutes: Routes = [
         redirectTo: '/home',
         pathMatch: 'full'
     },
-    {path: '**', component: PageNotFoundComponent}
+    {
+        path: '**',
+        component: PageNotFoundComponent
+    }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
-    providers: [
-        {provide: LocationStrategy, useClass: HashLocationStrategy}
-    ],
-
+    /*    providers: [
+     {provide: LocationStrategy, useClass: HashLocationStrategy}
+     ],
+     */
     exports: [RouterModule]
 })
 export class AppRoutingModule {

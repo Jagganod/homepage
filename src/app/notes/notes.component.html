@@ -36,8 +36,8 @@
 
   <div class="row ">
     <div *ngFor="let n of notes" class="col col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <note-card [item]="n" (onEdit)="doEdit($event)" (onDelete)="doDelete($event)">
-      </note-card>
+      <app-note-card [item]="n" (onEdit)="doEdit($event)" (onDelete)="doDelete($event)">
+      </app-note-card>
     </div>
   </div>
 </div>

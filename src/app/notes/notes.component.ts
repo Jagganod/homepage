@@ -21,8 +21,7 @@ export class NotesComponent implements OnInit, OnChanges {
     closeResult: string;
 
     constructor(private modalService: NgbModal, private notesService: NotesService) {
-        console.log('ctor');
-
+        console.log('Create NotesComponent');
     }
 
     ngOnInit(): void {
@@ -55,7 +54,6 @@ export class NotesComponent implements OnInit, OnChanges {
                     }
 
                 });
-                // this.notes = allDoc.rows;
             })
             .catch(error => console.error(error));
     }
@@ -96,7 +94,7 @@ export class NotesComponent implements OnInit, OnChanges {
                 this.noteUpdate(this.selectedNote);
             }
         }, (reason) => {
-            // Die Notiz soll immer gespeichert werden
+            // Save always, oven on cancel
             this.noteUpdate(this.selectedNote);
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
             console.log(this.closeResult);
