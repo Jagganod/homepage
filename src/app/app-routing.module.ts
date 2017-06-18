@@ -6,7 +6,6 @@ import {CatsComponent} from 'app/cats/cats.component';
 import {AppMusik} from './musik/app.musik';
 import {HomeImpressumComponent} from './impressum/impressum.component';
 import {PageNotFoundComponent} from './system/page-not-found.component';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 const appRoutes: Routes = [
     {

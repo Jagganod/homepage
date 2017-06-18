@@ -14,6 +14,8 @@ export class NotesComponent implements OnInit, OnChanges {
 
     @ViewChild('noteDialog') dialog: ElementRef;
 
+    CONFIG_NAME = 'myConfig';
+
     notes: Array<Note> = [];
     selectedNote: Note;
     notesConfig: NotesConfig = new NotesConfig();
@@ -25,44 +27,22 @@ export class NotesComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
+
         console.log('init');
+        this.configLoad()
+            .then(() => this.searchNotes())
+            .catch(() => this.searchNotes());
 
-        const CONFIG_NAME = 'myConfig';
+    }
 
-        this.notesService.configLoad(CONFIG_NAME).then(doc => {
+    private configLoad() {
+        return this.notesService.configLoad(this.CONFIG_NAME).then(doc => {
             this.notesConfig = doc;
-            this.loadAllNotes();
-        }).catch(result => {
+        }).catch(() => {
             this.notesConfig = new NotesConfig();
             this.notesConfig.searchtext = '';
-            this.notesConfig._id = CONFIG_NAME;
-            this.loadAllNotes();
+            this.notesConfig._id = this.CONFIG_NAME;
         });
-
-    }
-
-    private loadAllNotes() {
-        const search = this.notesConfig.searchtext.toLowerCase().trim();
-        this.notesService.findAll()
-
-            .then(allDoc => {
-                this.notes = [];
-                allDoc.rows.forEach(row => {
-                    const doc = row.doc;
-                    if (search === '' || this.contains(doc.title, search) || this.contains(doc.content, search)) {
-                        this.notes.push(doc);
-                    }
-
-                });
-            })
-            .catch(error => console.error(error));
-    }
-
-    private contains(text: string, substring: string): boolean {
-        if (isUndefined(text)) {
-            return false;
-        }
-        return text.toLowerCase().indexOf(substring) !== -1;
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -81,9 +61,24 @@ export class NotesComponent implements OnInit, OnChanges {
         this.openDialog();
     }
 
-    startSearch() {
-        this.notesService.configSave(this.notesConfig);
-        this.loadAllNotes();
+    searchNotes() {
+        this.configSave();
+
+        this.notesService.findText(this.notesConfig.searchtext)
+            .then(notesFound => this.notes = notesFound)
+            .catch(error => console.error(error));
+    }
+
+    private configSave() {
+        this.notesService.configSave(this.notesConfig).then(() =>
+            this.notesService.configLoad(this.CONFIG_NAME).then(doc => {
+                this.notesConfig = doc;
+            }).catch(() => {
+                this.notesConfig = new NotesConfig();
+                this.notesConfig.searchtext = '';
+                this.notesConfig._id = this.CONFIG_NAME;
+            })
+        );
     }
 
     openDialog() {
@@ -137,7 +132,7 @@ export class NotesComponent implements OnInit, OnChanges {
         const myThis = this;
         this.notesService.noteSave(note).then(function (response) {
             console.log(response);
-            myThis.loadAllNotes();
+            myThis.searchNotes();
         }).catch(err => console.log(err));
     }
 

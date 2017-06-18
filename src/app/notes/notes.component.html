@@ -20,13 +20,13 @@
 
              debounce
              [delay]="700"
-             (func)="startSearch()"
+             (func)="searchNotes()"
 
              [(ngModel)]="notesConfig.searchtext"
              class="form-control"
              placeholder="suchen nach...">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="startSearch()">Go!</button>
+        <button class="btn btn-secondary" type="button" (click)="searchNotes()">Go!</button>
       </span>
     </div>
 

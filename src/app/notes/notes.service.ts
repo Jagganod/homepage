@@ -15,7 +15,6 @@ export class NotesService implements OnInit {
         console.log('PouchDB is Init');
     }
 
-
     constructor() {
         this.db = new PouchDB('notesDB');
         this.dbConfig = new PouchDB('notesConfigDB');
@@ -51,4 +50,36 @@ export class NotesService implements OnInit {
             return this.db.remove(doc);
         });
     }
+
+    public findText(searchText: string): any {
+        const search = searchText.toLowerCase().trim();
+        return this.findAll()
+            .then(allDoc => {
+                const mynotes: Array<Note> = [];
+                allDoc.rows.forEach(row => {
+                        const doc = row.doc;
+                        if (this.contains(doc, search)) {
+                            mynotes.push(doc);
+                        }
+                    }
+                );
+                return mynotes;
+            });
+
+    }
+
+    public contains(note: Note, searchText: string): boolean {
+        if (isUndefined(note)) {
+            return false;
+        }
+        const substring = searchText.trim().toLowerCase();
+        if (substring === '') {
+            return true;
+        }
+
+        const foundTitle: boolean = isUndefined(note.title) ? false : note.title.toLowerCase().indexOf(substring) !== -1;
+        const foundContent: boolean = (isUndefined(note.content)) ? false : note.content.toLowerCase().indexOf(substring) !== -1;
+        return (foundTitle || foundContent);
+    }
+
 }

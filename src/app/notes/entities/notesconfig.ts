@@ -1,4 +1,4 @@
 export class NotesConfig {
-  _id: string;
-  searchtext: string;
+    _id: string;
+    searchtext: string;
 }
