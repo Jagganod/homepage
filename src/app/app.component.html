@@ -1,53 +1,40 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded cssNav">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" routerLink="/home">
-    <img src="/assets/images/wolf.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Wolf-Center
-  </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLink="/home">
+        <img src="/assets/images/wolf.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Wolf-Center
+    </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/musik" routerLinkActive="active">Musik</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/cats" routerLinkActive="active">Katzen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/notes" routerLinkActive="active">Notizen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/kfz" routerLinkActive="active">Kennzeichen</a>
-      </li>
-      <!--
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/impressum" routerLinkActive="active">Impressum</a>
-      </li>
-      -->
-      <!--
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
             </li>
-      -->
-    </ul>
-    <!--
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    -->
-  </div>
+            <li class="nav-item ">
+                <a class="nav-link" routerLink="/musik" routerLinkActive="active">Musik</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/cats" routerLinkActive="active">Katzen</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Apps
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" routerLink="/notes" routerLinkActive="active">Notizen</a>
+                    <a class="nav-link" routerLink="/kfz" routerLinkActive="active">Kennzeichensuche</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <br/>
 
 <router-outlet></router-outlet>
 <!-- Routed views go here -->
-
 <app-footer></app-footer>
 
