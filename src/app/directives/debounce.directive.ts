@@ -1,10 +1,12 @@
 import {EventEmitter, ElementRef, OnInit, Directive, Input, Output} from '@angular/core';
-import {Observable} from 'rxjs';
+
 import {NgModel} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 @Directive({ selector: '[debounce]' })
 export class Debounce implements OnInit {
-  @Input() delay: number = 700;
+  @Input() delay = 700;
   @Output() func: EventEmitter<any> = new EventEmitter();
 
   constructor(private elementRef: ElementRef, private model: NgModel) {

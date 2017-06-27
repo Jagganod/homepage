@@ -15,6 +15,7 @@ import {HomeImpressumComponent} from './impressum/impressum.component';
 import {AppMusik} from './musik/app.musik';
 import {AppRoutingModule} from './app-routing.module';
 import {FooterComponent} from './main/footer.component';
+import {KfzModule} from './kfz/kfz.module';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import {FooterComponent} from './main/footer.component';
         HttpModule,
         NgbModule.forRoot(),
         AppRoutingModule,
-        NotesModule
+        NotesModule, KfzModule
     ],
     providers: [],
     bootstrap: [AppComponent]

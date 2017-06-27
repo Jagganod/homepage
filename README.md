@@ -1,6 +1,9 @@
 # Homepage with Angular 4 and Bootstrap 4.
 
-This project works with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
+This project works with 
+[Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
+[ng-bootstrap](https://ng-bootstrap.github.io/#/home)
+[Bootstrap 4](http://v4-alpha.getbootstrap.com/)
 
 ## Build
 

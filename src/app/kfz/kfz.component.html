@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <form class="form-inline">
+        <div class="form-group mx-sm-3">
+            <div class="input-group">
+                <div class="input-group-btn showPointer">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{searchBySelected.text}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" *ngFor="let n of searchBy" (click)="select(n)">{{n.text}}</a>
+                    </div>
+                </div>
+                <input
+                        debounce
+                        [delay]="700"
+                        (func)="search()"
+
+                        type="text"
+                        class="form-control"
+
+                        placeholder="Suchtext"
+                        [(ngModel)]="searchTerm"
+                        name="searchTerm"
+                >
+            </div>
+
+        </div>
+        <button class="btn btn-primary" (click)="search()">Suchen</button>
+    </form>
+
+    <br/>
+
+    <div class="container-fluid">
+        <div class="row " *ngFor="let n of kfzList | async">
+            <div class="col-1">{{n.usz}}</div>
+            <div class="col-11">{{n.stakr}}</div>
+        </div>
+    </div>
+</div>
